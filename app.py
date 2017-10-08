@@ -13,17 +13,21 @@ GIPHY_KEY = os.environ['GIPHY_KEY']
 GMAPS_API = 'https://maps.googleapis.com/maps/api/place/textsearch/json'
 GIPHY_API = 'https://api.giphy.com/v1/gifs/search'
 
-@app.route('/', methods=['POST'])
-def getPlacesAndGifs():
+
+@app.route('/placesAndGifs.json', methods=['POST'])
+def getJsonFile():
     if request.method == 'POST':
         request_json = request.get_json()
+
+        if request_json == None:
+            return "ERROR: The request header Content-Type Must be application/json and the request should have a body\n"
 
         try:
             query = request_json['query']
         except KeyError:
-            return 'Request body json must have a key called query'
+            return 'ERROR: Request body json must have a key called query\n'
         if not isinstance(query, basestring):
-            return 'query key in the request body json must point to a value of type string'
+            return 'ERROR: query key in the request body json must point to a value of type string\n'
 
         buildJsonFile(query)
         return send_file('send.json', mimetype='application/json')
