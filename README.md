@@ -7,7 +7,7 @@ It takes a POST request with Content-Type: application/json. In the request body
 
 After retrieving those, it will use place's name to grab gif objects from the Giphy API's search endpoint. All those results are associated with the Google results having the key 'giphies'.
 
-This resulting object is dumped into a json file and send back to the client or requester.
+This resulting object is dumped into a json file and sent back to the client or requester.
 
 This project may be hosted on Heroku for a time and can be queried using the following cURL command:
 
