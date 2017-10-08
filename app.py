@@ -4,6 +4,7 @@ from flask import send_file
 from flask import json
 import requests
 import copy
+import os
 
 from boto.s3.connection import S3Connection
 
