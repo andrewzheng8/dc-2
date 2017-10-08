@@ -11,7 +11,7 @@ This resulting object is dumped into a json file and sent back to the client or 
 
 This project may be hosted on Heroku for a time and can be queried using the following cURL command:
 
-curl -H "Content-Type: application/json" -X POST -d '{"query":"<Your Query Here>"}' -O https://maps-giphy-2.herokuapp.com/placesAndGifs.json
+curl -H "Content-Type: application/json" -X POST -d '{"query":"\<Your Query Here\>"}' -O https://maps-giphy-2.herokuapp.com/placesAndGifs.json
 
 If leaving out the -O, using Postman, etc., the data should comeback as a JSON object.
 
