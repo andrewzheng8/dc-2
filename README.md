@@ -1,6 +1,6 @@
 # Flask server
 
-##Summary
+## Summary
 This app is a simple server with a single endpoint '/placesAndGifs.json'.
 
 It takes a POST request with Content-Type: application/json. In the request body it expects a key 'query' to point to a string value. Using that string, the server will retrieve a number of locations from the Google Places API text search endpoint.
@@ -15,6 +15,6 @@ curl -H "Content-Type: application/json" -X POST -d '{"query":"<Your Query Here>
 
 If leaving out the -O, using Postman, etc., the data should comeback as a JSON object.
 
-##Issues
+## Issues
 
 If there any issues, please feel free to raise an issue or email me. Email can be found on GitHub - **_@andrewzheng8_**.
