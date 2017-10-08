@@ -30,8 +30,9 @@ def getPlacesAndGifs():
             return 'query key in the request body json must point to a value of type string'
 
         # return 'Hello'
-        buildJsonFile(query)
-        return send_file('send.json', mimetype='application/json')
+        # buildJsonFile(query)
+        # return send_file('send.json', mimetype='application/json')
+        print s3
 
     return 'Hello World! How are you even at this point\n'
 
