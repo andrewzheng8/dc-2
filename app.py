@@ -6,20 +6,21 @@ import requests
 import copy
 import os
 
-from boto.s3.connection import S3Connection
+# from boto.s3.connection import S3Connection
 
-s3 = S3Connection(os.environ['GMAPS_KEY'], os.environ['GIPHY_KEY'])
+# s3 = S3Connection(os.environ['GMAPS_KEY'], os.environ['GIPHY_KEY'])
 
 app = Flask(__name__)
 
-
+GMAPS_KEY = os.environ['GMAPS_KEY']
+GIPHY_KEY = os.environ['GIPHY_KEY']
 GMAPS_API = 'https://maps.googleapis.com/maps/api/place/textsearch/json'
 GIPHY_API = 'https://api.giphy.com/v1/gifs/search'
 
 @app.route('/', methods=['POST'])
 def getPlacesAndGifs():
     if request.method == 'POST':
-
+        print 'testing *****'
         request_json = request.get_json()
 
         try:
@@ -30,19 +31,20 @@ def getPlacesAndGifs():
             return 'query key in the request body json must point to a value of type string'
 
         # return 'Hello'
-        # buildJsonFile(query)
-        # return send_file('send.json', mimetype='application/json')
-        print s3
+        buildJsonFile(query)
+        return send_file('send.json', mimetype='application/json')
 
     return 'Hello World! How are you even at this point\n'
 
 def getPlaces(query):
-    payload = {'key':s3['GMAPS_KEY'], 'query':query}
+    payload = {'key':GMAPS_KEY, 'query':query}
     gmaps_response = requests.get(GMAPS_API, params=payload)
+    print GMAPS_KEY
+    print gmaps_response.json()
     return gmaps_response.json()['results']
 
 def getGiphies(gmapsObj):
-    giphy_payload = {'api_key': s3['GIPHY_KEY'], 'q': gmapsObj['name']}
+    giphy_payload = {'api_key': GIPHY_KEY, 'q': gmapsObj['name']}
     giphy_response = requests.get(GIPHY_API, params= giphy_payload)
     giphy_results = giphy_response.json()['data']
     return giphy_results
