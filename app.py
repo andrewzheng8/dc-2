@@ -15,7 +15,7 @@ GIPHY_API = 'https://api.giphy.com/v1/gifs/search'
 
 @app.route('/', methods=['GET'])
 def homepage():
-    return "This is a route for a server"
+    return "This is a route for a server. Use the route /placesAndGifs.json to POST json and receive json file"
 
 @app.route('/placesAndGifs.json', methods=['POST'])
 def getJsonFile():
