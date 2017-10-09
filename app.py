@@ -13,6 +13,9 @@ GIPHY_KEY = os.environ['GIPHY_KEY']
 GMAPS_API = 'https://maps.googleapis.com/maps/api/place/textsearch/json'
 GIPHY_API = 'https://api.giphy.com/v1/gifs/search'
 
+@app.route('/', methods=['GET'])
+def homepage():
+    return "This is a route for a server"
 
 @app.route('/placesAndGifs.json', methods=['POST'])
 def getJsonFile():
